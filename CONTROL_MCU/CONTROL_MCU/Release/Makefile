@@ -41,10 +41,12 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../HAL/DC_Motor.c \
+../HAL/EXTERNAL_EEPROM.c \
 ../HAL/LCD.c \
 ../main.c \
 ../MCAL/DIO.c \
 ../MCAL/DIO_cfg.c \
+../MCAL/I2C.c \
 ../MCAL/Timers.c \
 ../MCAL/UART.c \
 ../SERVICE/Timers_Services.c \
@@ -59,10 +61,12 @@ ASM_SRCS +=
 
 OBJS +=  \
 HAL/DC_Motor.o \
+HAL/EXTERNAL_EEPROM.o \
 HAL/LCD.o \
 main.o \
 MCAL/DIO.o \
 MCAL/DIO_cfg.o \
+MCAL/I2C.o \
 MCAL/Timers.o \
 MCAL/UART.o \
 SERVICE/Timers_Services.o \
@@ -70,10 +74,12 @@ SERVICE/UART_Services.o
 
 OBJS_AS_ARGS +=  \
 HAL/DC_Motor.o \
+HAL/EXTERNAL_EEPROM.o \
 HAL/LCD.o \
 main.o \
 MCAL/DIO.o \
 MCAL/DIO_cfg.o \
+MCAL/I2C.o \
 MCAL/Timers.o \
 MCAL/UART.o \
 SERVICE/Timers_Services.o \
@@ -81,10 +87,12 @@ SERVICE/UART_Services.o
 
 C_DEPS +=  \
 HAL/DC_Motor.d \
+HAL/EXTERNAL_EEPROM.d \
 HAL/LCD.d \
 main.d \
 MCAL/DIO.d \
 MCAL/DIO_cfg.d \
+MCAL/I2C.d \
 MCAL/Timers.d \
 MCAL/UART.d \
 SERVICE/Timers_Services.d \
@@ -92,10 +100,12 @@ SERVICE/UART_Services.d
 
 C_DEPS_AS_ARGS +=  \
 HAL/DC_Motor.d \
+HAL/EXTERNAL_EEPROM.d \
 HAL/LCD.d \
 main.d \
 MCAL/DIO.d \
 MCAL/DIO_cfg.d \
+MCAL/I2C.d \
 MCAL/Timers.d \
 MCAL/UART.d \
 SERVICE/Timers_Services.d \
@@ -116,6 +126,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 HAL/DC_Motor.o: ../HAL/DC_Motor.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I".." -I"../MCAL" -I"../HAL" -I"../.."  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/EXTERNAL_EEPROM.o: ../HAL/EXTERNAL_EEPROM.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I".." -I"../MCAL" -I"../HAL" -I"../.."  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -144,6 +161,13 @@ MCAL/DIO.o: ../MCAL/DIO.c
 	
 
 MCAL/DIO_cfg.o: ../MCAL/DIO_cfg.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I".." -I"../MCAL" -I"../HAL" -I"../.."  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/I2C.o: ../MCAL/I2C.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I".." -I"../MCAL" -I"../HAL" -I"../.."  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

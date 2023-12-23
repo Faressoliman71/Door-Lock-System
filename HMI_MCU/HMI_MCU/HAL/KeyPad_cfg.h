@@ -19,8 +19,8 @@ const u8 Keypad_array[ROWS][COLS]={
 #endif 
 
 /*********************************** OUTPUT AND INPUTS PINS CONFIGURE*****************/
-#define KEYPAD_FIRST_OUTPUT PINB4
-#define KEYPAD_FIRST_INTPUT PIND2
+#define KEYPAD_FIRST_OUTPUT PINA0
+#define KEYPAD_FIRST_INTPUT PINA4
 #define NOT_KEY 'T'                // If there is no button pressed
 
 #endif /* KEYPAD_CFG_H_ */

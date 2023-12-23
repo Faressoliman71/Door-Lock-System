@@ -134,6 +134,12 @@
     <Compile Include="HAL\DC_Motor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\EXTERNAL_EEPROM.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\EXTERNAL_EEPROM.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\LCD.c">
       <SubType>compile</SubType>
     </Compile>
@@ -159,6 +165,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\DIO_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\I2C.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\Timers.c">

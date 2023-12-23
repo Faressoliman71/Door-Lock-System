@@ -272,6 +272,9 @@ void vector (void)*/
 #define TWSR    (*(volatile unsigned char*)0x21)
 #define TWAR    (*(volatile unsigned char*)0x22)
 #define TWDR    (*(volatile unsigned char*)0x23)
+#define TWCR    (*(volatile unsigned char*)0x56)
+
+
 
 /* TIMSK */
 #define OCIE2   7
@@ -374,6 +377,8 @@ void vector (void)*/
 #define TWI_vect			    __vector_19
 /* Store Program Memory Ready */
 #define SPM_RDY_vect			__vector_20
+
+
 
 
 

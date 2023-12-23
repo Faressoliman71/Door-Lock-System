@@ -36,6 +36,14 @@ Discarded input sections
  .text.DcMotor_Rotate
                 0x00000000       0x3a HAL/DC_Motor.o
  .comment       0x00000000       0x31 HAL/DC_Motor.o
+ .text          0x00000000        0x0 HAL/EXTERNAL_EEPROM.o
+ .data          0x00000000        0x0 HAL/EXTERNAL_EEPROM.o
+ .bss           0x00000000        0x0 HAL/EXTERNAL_EEPROM.o
+ .text.EEPROM_writeByte
+                0x00000000       0x62 HAL/EXTERNAL_EEPROM.o
+ .text.EEPROM_readByte
+                0x00000000       0x8e HAL/EXTERNAL_EEPROM.o
+ .comment       0x00000000       0x31 HAL/EXTERNAL_EEPROM.o
  .text          0x00000000        0x0 HAL/LCD.o
  .data          0x00000000        0x0 HAL/LCD.o
  .bss           0x00000000        0x0 HAL/LCD.o
@@ -113,6 +121,24 @@ Discarded input sections
  .rodata.pins_status_array
                 0x00000000       0x20 MCAL/DIO_cfg.o
  .comment       0x00000000       0x31 MCAL/DIO_cfg.o
+ .text          0x00000000        0x0 MCAL/I2C.o
+ .data          0x00000000        0x0 MCAL/I2C.o
+ .bss           0x00000000        0x0 MCAL/I2C.o
+ .text.TWI_init
+                0x00000000        0xe MCAL/I2C.o
+ .text.TWI_start
+                0x00000000        0xc MCAL/I2C.o
+ .text.TWI_stop
+                0x00000000        0x6 MCAL/I2C.o
+ .text.TWI_writeByte
+                0x00000000        0xe MCAL/I2C.o
+ .text.TWI_readByteWithACK
+                0x00000000        0xe MCAL/I2C.o
+ .text.TWI_readByteWithNACK
+                0x00000000        0xe MCAL/I2C.o
+ .text.TWI_getStatus
+                0x00000000        0x6 MCAL/I2C.o
+ .comment       0x00000000       0x31 MCAL/I2C.o
  .text          0x00000000        0x0 MCAL/Timers.o
  .data          0x00000000        0x0 MCAL/Timers.o
  .bss           0x00000000        0x0 MCAL/Timers.o
@@ -427,10 +453,12 @@ Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
 LOAD HAL/DC_Motor.o
+LOAD HAL/EXTERNAL_EEPROM.o
 LOAD HAL/LCD.o
 LOAD main.o
 LOAD MCAL/DIO.o
 LOAD MCAL/DIO_cfg.o
+LOAD MCAL/I2C.o
 LOAD MCAL/Timers.o
 LOAD MCAL/UART.o
 LOAD SERVICE/Timers_Services.o

@@ -7,15 +7,15 @@
 #define _8_BIT 2 //private
                                                                    
 //LCD mood configura_BIT
-#define LCD_MOOD _4_BIT
+#define LCD_MOOD _8_BIT
 
 //LCD RS and ENABLE config
- #define RS PINA1
+ #define RS PIND5
  
- #define ENABLE PINA2
+ #define ENABLE PIND6
  
 //LCD Pins configuration (mood 8_bit)
- #define LCD_PORT PA
+ #define LCD_PORT PC
  
  //LCD Pins configuration (mood 4_bit)
  #define LCD_D4 PINA3
