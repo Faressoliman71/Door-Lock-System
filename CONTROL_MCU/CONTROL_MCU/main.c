@@ -6,11 +6,13 @@
  */ 
 
 #include <avr/io.h>
+#include "Utils.h"
 
 
 int main(void)
 {
-    /* Replace with your application code */
+	SET_BIT(PORTD,7);
+   
     while (1) 
     {
     }

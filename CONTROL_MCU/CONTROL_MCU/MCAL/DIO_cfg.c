@@ -26,7 +26,7 @@
 	 OUTPUT,      /*port C pin 5*/
 	 OUTPUT,      /*port C pin 6*/
      OUTPUT,      /*port C pin 7*/
-	 INPULL,      /*port D pin 0*/
+	 INFREE,      /*port D pin 0*/
 	 OUTPUT,      /*port D pin 1*/
 	 INPULL,      /*port D pin 2   INT0 */
 	 INPULL,     /* port D pin 3   INT1 */
