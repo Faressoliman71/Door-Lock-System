@@ -31,6 +31,7 @@ int main(void)
 	UART_Init();
 	
 	
+	
     while(1) 
     { 
 	     while(flag == 0)
@@ -44,9 +45,10 @@ int main(void)
 			  for(int j = 0 ; j<PassLength;j++)
 			  {
 				  UART_Send(pass1[j]+'0');
+				  _delay_ms(10);
 			  }
 			  flag = 1;
-			  _delay_ms(1000);
+			  _delay_ms(10);
 			  LCD_clear();
 		  }
 		  else 
@@ -72,20 +74,24 @@ int main(void)
 		   if(option == '-')
 		   {
 			   
-			     get_password();
+			  	   
+			   get_password();
 			     for(int j = 0 ; j<PassLength;j++)
 			     {
-				     UART_Send(pass1[j]);
+				     UART_Send(pass1[j]+'0');
+					 _delay_ms(10);
 			     }
 				 option = 0;
 		   }
 		   else if ( option == '+')
 		   {
+			  
 			   LCD_clear();
 			   get_password();
 			   for(int j = 0 ; j<PassLength;j++)
 			   {
-				   UART_Send(pass1[j]);
+				   UART_Send(pass1[j]+'0');
+				   _delay_ms(10);
 			   }
 			   option = 0;
 		   }

@@ -2,11 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-HAL\DC_Motor.c
-
 HAL\EXTERNAL_EEPROM.c
 
-HAL\LCD.c
+HAL\MOTOR.c
+
+HAL\MOTOR_cfg.c
 
 main.c
 

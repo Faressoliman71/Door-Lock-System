@@ -74,6 +74,6 @@ extern void DIO_wright_port_reg_as_one_byte(DIO_PORT_TYPE port,u8 value);
 extern u8 DIO_read_port_reg_as_one_byte(DIO_PORT_TYPE port);
 
 //6-choose the pins status one time(OUTPUT - Input & pull up - Input & free) by app layer(con)
-extern void DIO_in_it_all_pins(void);
+extern void DIO_init_all_pins(void);
 
 #endif /* DIO_INTERFACE_H_ */

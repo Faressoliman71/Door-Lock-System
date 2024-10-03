@@ -315,7 +315,7 @@ u8 DIO_read_port_reg_as_one_byte(DIO_PORT_TYPE port)
 }
 
 
-void DIO_in_it_all_pins(void)
+void DIO_init_all_pins(void)
 {
 	DIO_PIN_TYPE i;
 	for(i=PINA0;i<TOTAL_PINS;i++)

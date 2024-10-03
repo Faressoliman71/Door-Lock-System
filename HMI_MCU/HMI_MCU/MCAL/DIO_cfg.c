@@ -30,7 +30,7 @@ const DIO_PIN_STATUS_TYPE pins_status_array[TOTAL_PINS]=
 	OUTPUT,      /*port C pin 5*/
 	OUTPUT,      /*port C pin 6*/
 	OUTPUT,      /*port C pin 7*/
-	OUTPUT,      /*port D pin 0*/
+	INFREE,      /*port D pin 0*/
 	OUTPUT,      /*port D pin 1*/
 	OUTPUT,      /*port D pin 2   INT0 */
 	OUTPUT,     /* port D pin 3   INT1 */
