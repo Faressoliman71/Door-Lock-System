@@ -23,6 +23,7 @@ Common symbol       size              file
 str_copy            0x2               services/UART_Services.o
 pass2               0x5               main.o
 pass1               0x5               main.o
+received_char       0x1               main.o
 
 Discarded input sections
 
@@ -157,8 +158,6 @@ Discarded input sections
                 0x00000000        0x8 MCAL/UART.o
  .text.UART_ReceivePeriodic
                 0x00000000       0x16 MCAL/UART.o
- .text.UART_RX_InterruptEnable
-                0x00000000        0x4 MCAL/UART.o
  .text.UART_RX_InterruptDisable
                 0x00000000        0x4 MCAL/UART.o
  .text.UART_TX_InterruptEnable
@@ -496,7 +495,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x8aa
+.text           0x00000000      0x8bc
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -605,43 +604,46 @@ END GROUP
                 0x0000029c       0x70 main.o
                 0x0000029c                check_password
  .text.startup.main
-                0x0000030c      0x126 main.o
+                0x0000030c      0x134 main.o
                 0x0000030c                main
  .text.DIO_wright_pin
-                0x00000432      0x102 MCAL/DIO.o
-                0x00000432                DIO_wright_pin
+                0x00000440      0x102 MCAL/DIO.o
+                0x00000440                DIO_wright_pin
  .text.DIO_read_pin
-                0x00000534       0x3a MCAL/DIO.o
-                0x00000534                DIO_read_pin
+                0x00000542       0x3a MCAL/DIO.o
+                0x00000542                DIO_read_pin
  .text.DIO_wright_port_reg_as_one_byte
-                0x0000056e       0x20 MCAL/DIO.o
-                0x0000056e                DIO_wright_port_reg_as_one_byte
+                0x0000057c       0x20 MCAL/DIO.o
+                0x0000057c                DIO_wright_port_reg_as_one_byte
  .text.DIO_init_all_pins
-                0x0000058e      0x1bc MCAL/DIO.o
-                0x0000058e                DIO_init_all_pins
+                0x0000059c      0x1bc MCAL/DIO.o
+                0x0000059c                DIO_init_all_pins
  .text.__vector_9
-                0x0000074a       0x52 MCAL/Timers.o
-                0x0000074a                __vector_9
+                0x00000758       0x52 MCAL/Timers.o
+                0x00000758                __vector_9
  .text.__vector_6
-                0x0000079c       0x52 MCAL/Timers.o
-                0x0000079c                __vector_6
+                0x000007aa       0x52 MCAL/Timers.o
+                0x000007aa                __vector_6
  .text.UART_Init
-                0x000007ee        0xc MCAL/UART.o
-                0x000007ee                UART_Init
+                0x000007fc        0xc MCAL/UART.o
+                0x000007fc                UART_Init
  .text.UART_Send
-                0x000007fa        0x8 MCAL/UART.o
-                0x000007fa                UART_Send
+                0x00000808        0x8 MCAL/UART.o
+                0x00000808                UART_Send
+ .text.UART_RX_InterruptEnable
+                0x00000810        0x4 MCAL/UART.o
+                0x00000810                UART_RX_InterruptEnable
  .text.__vector_13
-                0x00000802       0x52 MCAL/UART.o
-                0x00000802                __vector_13
+                0x00000814       0x52 MCAL/UART.o
+                0x00000814                __vector_13
  .text.__vector_15
-                0x00000854       0x52 MCAL/UART.o
-                0x00000854                __vector_15
-                0x000008a6                . = ALIGN (0x2)
+                0x00000866       0x52 MCAL/UART.o
+                0x00000866                __vector_15
+                0x000008b8                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000008a6        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000008a6                _exit
-                0x000008a6                exit
+ .fini9         0x000008b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000008b8                _exit
+                0x000008b8                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -660,11 +662,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000008a6        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000008b8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000008aa                _etext = .
+                0x000008bc                _etext = .
 
-.data           0x00800060       0x7a load address 0x000008aa
+.data           0x00800060       0x7a load address 0x000008bc
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -686,7 +688,7 @@ END GROUP
                 0x008000da                _edata = .
                 0x008000da                PROVIDE (__data_end, .)
 
-.bss            0x008000da       0x15
+.bss            0x008000da       0x16
                 0x008000da                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -705,18 +707,19 @@ END GROUP
  .bss.UART_RX_Fptr
                 0x008000e3        0x2 MCAL/UART.o
  *(COMMON)
- COMMON         0x008000e5        0xa main.o
+ COMMON         0x008000e5        0xb main.o
                 0x008000e5                pass2
                 0x008000ea                pass1
-                0x008000ef                PROVIDE (__bss_end, .)
-                0x000008aa                __data_load_start = LOADADDR (.data)
-                0x00000924                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008000ef                received_char
+                0x008000f0                PROVIDE (__bss_end, .)
+                0x000008bc                __data_load_start = LOADADDR (.data)
+                0x00000936                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008000ef        0x0
+.noinit         0x008000f0        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008000ef                _end = .
+                0x008000f0                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

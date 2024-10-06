@@ -21,7 +21,10 @@ Allocating common symbols
 Common symbol       size              file
 
 str_copy            0x2               SERVICE/UART_Services.o
+first_pass          0x5               main.o
+temp                0x1               main.o
 second_pass         0x5               main.o
+timerTicks          0x2               main.o
 
 Discarded input sections
 
@@ -43,7 +46,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .bss.option    0x00000000        0x1 main.o
+ .text.countTimerTicks
+                0x00000000       0x14 main.o
  .text          0x00000000        0x0 MCAL/DIO.o
  .data          0x00000000        0x0 MCAL/DIO.o
  .bss           0x00000000        0x0 MCAL/DIO.o
@@ -68,6 +72,8 @@ Discarded input sections
  .text          0x00000000        0x0 MCAL/Timers.o
  .data          0x00000000        0x0 MCAL/Timers.o
  .bss           0x00000000        0x0 MCAL/Timers.o
+ .text.Timer0_Init
+                0x00000000       0x40 MCAL/Timers.o
  .text.Timer0_OC0_Mode
                 0x00000000       0x36 MCAL/Timers.o
  .text.Timer1_Init
@@ -562,47 +568,44 @@ END GROUP
                 0x0000019a       0x2e HAL/MOTOR.o
                 0x0000019a                MOTOR_clockwise
  .text.uart_receive_handler
-                0x000001c8       0x2a main.o
+                0x000001c8       0x40 main.o
                 0x000001c8                uart_receive_handler
  .text.passwordSaving
-                0x000001f2       0x38 main.o
-                0x000001f2                passwordSaving
+                0x00000208       0x38 main.o
+                0x00000208                passwordSaving
  .text.checkPassword
-                0x0000022a       0x22 main.o
-                0x0000022a                checkPassword
+                0x00000240       0x22 main.o
+                0x00000240                checkPassword
  .text.checkPasswordInMemory
-                0x0000024c       0x38 main.o
-                0x0000024c                checkPasswordInMemory
+                0x00000262       0x38 main.o
+                0x00000262                checkPasswordInMemory
  .text.startup.main
-                0x00000284       0x76 main.o
-                0x00000284                main
+                0x0000029a       0xa0 main.o
+                0x0000029a                main
  .text.DIO_wright_pin
-                0x000002fa      0x102 MCAL/DIO.o
-                0x000002fa                DIO_wright_pin
+                0x0000033a      0x102 MCAL/DIO.o
+                0x0000033a                DIO_wright_pin
  .text.DIO_init_all_pins
-                0x000003fc      0x1bc MCAL/DIO.o
-                0x000003fc                DIO_init_all_pins
+                0x0000043c      0x1bc MCAL/DIO.o
+                0x0000043c                DIO_init_all_pins
  .text.TWI_init
-                0x000005b8        0xe MCAL/I2C.o
-                0x000005b8                TWI_init
+                0x000005f8        0xe MCAL/I2C.o
+                0x000005f8                TWI_init
  .text.TWI_start
-                0x000005c6        0xc MCAL/I2C.o
-                0x000005c6                TWI_start
+                0x00000606        0xc MCAL/I2C.o
+                0x00000606                TWI_start
  .text.TWI_stop
-                0x000005d2        0x6 MCAL/I2C.o
-                0x000005d2                TWI_stop
+                0x00000612        0x6 MCAL/I2C.o
+                0x00000612                TWI_stop
  .text.TWI_writeByte
-                0x000005d8        0xe MCAL/I2C.o
-                0x000005d8                TWI_writeByte
+                0x00000618        0xe MCAL/I2C.o
+                0x00000618                TWI_writeByte
  .text.TWI_readByteWithNACK
-                0x000005e6        0xe MCAL/I2C.o
-                0x000005e6                TWI_readByteWithNACK
+                0x00000626        0xe MCAL/I2C.o
+                0x00000626                TWI_readByteWithNACK
  .text.TWI_getStatus
-                0x000005f4        0x6 MCAL/I2C.o
-                0x000005f4                TWI_getStatus
- .text.Timer0_Init
-                0x000005fa       0x40 MCAL/Timers.o
-                0x000005fa                Timer0_Init
+                0x00000634        0x6 MCAL/I2C.o
+                0x00000634                TWI_getStatus
  .text.__vector_9
                 0x0000063a       0x52 MCAL/Timers.o
                 0x0000063a                __vector_9
@@ -651,63 +654,64 @@ END GROUP
  *(.fini0)
                 0x000007a0                _etext = .
 
-.data           0x00800060       0x28 load address 0x000007a0
+.data           0x00800060       0x22 load address 0x000007a0
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.first_pass
-                0x00800060        0x5 main.o
-                0x00800060                first_pass
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata.motor_pins_array
-                0x00800065        0x2 HAL/MOTOR_cfg.o
-                0x00800065                motor_pins_array
+                0x00800060        0x2 HAL/MOTOR_cfg.o
+                0x00800060                motor_pins_array
  .rodata.pins_status_array
-                0x00800067       0x20 MCAL/DIO_cfg.o
-                0x00800067                pins_status_array
+                0x00800062       0x20 MCAL/DIO_cfg.o
+                0x00800062                pins_status_array
  *(.gnu.linkonce.r*)
-                0x00800088                . = ALIGN (0x2)
- *fill*         0x00800087        0x1 
-                0x00800088                _edata = .
-                0x00800088                PROVIDE (__data_end, .)
+                0x00800082                . = ALIGN (0x2)
+                0x00800082                _edata = .
+                0x00800082                PROVIDE (__data_end, .)
 
-.bss            0x00800088       0x12
-                0x00800088                PROVIDE (__bss_start, .)
+.bss            0x00800082       0x1b
+                0x00800082                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.state_of_second_pass
-                0x00800088        0x1 main.o
-                0x00800088                state_of_second_pass
- .bss.flag3     0x00800089        0x1 main.o
-                0x00800089                flag3
- .bss.flag2     0x0080008a        0x1 main.o
-                0x0080008a                flag2
- .bss.flag      0x0080008b        0x1 main.o
-                0x0080008b                flag
- .bss.count     0x0080008c        0x1 main.o
-                0x0080008c                count
+                0x00800082        0x1 main.o
+                0x00800082                state_of_second_pass
+ .bss.option    0x00800083        0x1 main.o
+                0x00800083                option
+ .bss.flag2     0x00800084        0x1 main.o
+                0x00800084                flag2
+ .bss.flag      0x00800085        0x1 main.o
+                0x00800085                flag
+ .bss.count2    0x00800086        0x1 main.o
+                0x00800086                count2
+ .bss.count     0x00800087        0x1 main.o
+                0x00800087                count
  .bss.Timer1_ICU_Fptr
-                0x0080008d        0x2 MCAL/Timers.o
+                0x00800088        0x2 MCAL/Timers.o
  .bss.Timer1_OVF_Fptr
-                0x0080008f        0x2 MCAL/Timers.o
+                0x0080008a        0x2 MCAL/Timers.o
  .bss.UART_TX_Fptr
-                0x00800091        0x2 MCAL/UART.o
+                0x0080008c        0x2 MCAL/UART.o
  .bss.UART_RX_Fptr
-                0x00800093        0x2 MCAL/UART.o
+                0x0080008e        0x2 MCAL/UART.o
  *(COMMON)
- COMMON         0x00800095        0x5 main.o
-                0x00800095                second_pass
-                0x0080009a                PROVIDE (__bss_end, .)
+ COMMON         0x00800090        0xd main.o
+                0x00800090                first_pass
+                0x00800095                temp
+                0x00800096                second_pass
+                0x0080009b                timerTicks
+                0x0080009d                PROVIDE (__bss_end, .)
                 0x000007a0                __data_load_start = LOADADDR (.data)
-                0x000007c8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000007c2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080009a        0x0
+.noinit         0x0080009d        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080009a                _end = .
+                0x0080009d                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

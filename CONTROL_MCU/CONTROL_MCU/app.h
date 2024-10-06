@@ -12,3 +12,5 @@ u8 checkPasswordInMemory(void);
 void passwordSaving(u8* password);
 
 u8 checkPassword(u8* firstPasswordEntry, u8* secondPasswordEntry);
+
+void countTimerTicks(void);

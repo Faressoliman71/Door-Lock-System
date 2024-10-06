@@ -20,6 +20,7 @@ u8 pass2 [PassLength] ;
 u8 check = 0 ;
 u8 flag = 0 ;
 u8 option = 0 ;
+u8 received_char ;
 
 
 int main(void)
@@ -29,6 +30,9 @@ int main(void)
     LCD_init();
 	KEYPAD_in_it();
 	UART_Init();
+	sei();
+	UART_RX_InterruptEnable();
+
 	
 	
 	
@@ -73,7 +77,7 @@ int main(void)
 		   }
 		   if(option == '-')
 		   {
-			   
+			   UART_Send(option);
 			  	   
 			   get_password();
 			     for(int j = 0 ; j<PassLength;j++)
@@ -85,7 +89,7 @@ int main(void)
 		   }
 		   else if ( option == '+')
 		   {
-			  
+			  UART_Send(option);
 			   LCD_clear();
 			   get_password();
 			   for(int j = 0 ; j<PassLength;j++)
