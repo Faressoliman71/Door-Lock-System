@@ -9,7 +9,7 @@
 #include "DIO_interface.h"
 #include <util/delay.h> 
 
-
+void uart_recieve_handler (void);
 
 #define PassLength 5
 #define ENTER '='
@@ -21,6 +21,7 @@ u8 check = 0 ;
 u8 flag = 0 ;
 u8 option = 0 ;
 u8 received_char ;
+u8 temp = 0 ;
 
 
 int main(void)
@@ -32,7 +33,7 @@ int main(void)
 	UART_Init();
 	sei();
 	UART_RX_InterruptEnable();
-
+    UART_RX_SetCallBack(uart_recieve_handler);
 	
 	
 	
@@ -166,4 +167,21 @@ u8 check_password()
 	}
 	return 1 ;
 	
+};
+void uart_recieve_handler()
+{
+	received_char = UDR ;
+	if(received_char == opening_code)
+	{
+		LCD_clear();
+		LCD_write_string("Door opening ");
+		_delay_ms(8000);
+		LCD_clear();
+	}
+	else if ( received_char == closing_code)
+	{
+		LCD_write_string("Closing");
+		_delay_ms(5000);
+		LCD_clear();
+	}
 };

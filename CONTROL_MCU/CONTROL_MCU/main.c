@@ -50,15 +50,22 @@ int main(void)
 			    state_of_second_pass = checkPasswordInMemory();
 			    if(state_of_second_pass ==1 && flag == 2)
 			     {
+				UART_Send(opening_code);
 				SET_BIT(PORTC,7);
 				MOTOR_clockwise(M1);
+				_delay_ms(10000);
+				UART_Send(closing_code);
+				MOTOR_counter_clockwise(M1);
 				_delay_ms(5000);
 				CLR_BIT(PORTC,7);
 				flag = 1;
+				option = 0 ;
 			     }
-			   else
+			   else if(state_of_second_pass == 0 && flag == 2)
 			    {
 				count2++;
+				flag = 1 ;
+				option = 0;
 			    }
 				
 			   break;
@@ -67,6 +74,7 @@ int main(void)
 				{
 					passwordSaving(first_pass);
 					flag =1 ;
+					option = 0;
 				}
 			  
 			   break;   
@@ -74,7 +82,13 @@ int main(void)
 			
 		}
 	 
-		
+		if(count2 == 3)
+		{
+			SET_BIT(PORTD,7);
+			_delay_ms(8000);
+			CLR_BIT(PORTD,7);
+			count2 = 0 ;
+		}
     }
 }
 

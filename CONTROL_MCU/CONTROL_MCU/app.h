@@ -1,6 +1,7 @@
 
 #include "StdTypes.h"
-
+#define opening_code 'o'
+#define closing_code 'c'
 #define passlength 5
 #define NOT_VALID '*'
 void uart_receive_handler (void);
